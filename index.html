@@ -5,66 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mentaliizi Studios</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #121212;
-      color: white;
+      background-color: #121212;
+      color: #fff;
       display: flex;
       justify-content: center;
     }
 
-    .container {
-      width: 600px;
-      margin-top: 20px;
+    /* Container principal */
+    .app-container {
+      width: 100%;
+      max-width: 900px;
     }
 
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
-      width: 600px;
+      left: 0;
+      right: 0;
       background: #181818;
-      padding: 15px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+
+    .navbar img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .navbar h1 {
+      font-size: 20px;
       font-weight: 700;
-      text-align: center;
-      border-bottom: 1px solid #333;
+      margin-left: 10px;
+      color: #f0f0f0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* Feed */
+    .feed {
+      margin-top: 80px;
+      padding: 20px;
     }
 
     .post {
-      background: #1e1e1e;
-      margin-top: 80px;
-      margin-bottom: 20px;
+      background: #1c1c1c;
       border-radius: 12px;
+      margin-bottom: 30px;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .post-header {
       display: flex;
       align-items: center;
-      padding: 10px;
+      padding: 15px;
+      border-bottom: 1px solid #2a2a2a;
     }
 
     .avatar {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: gray;
       margin-right: 10px;
     }
 
     .username {
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 16px;
     }
 
     .post-audio {
-      width: 100%;
       background: #000;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
+      padding: 15px;
     }
 
     audio {
@@ -72,36 +112,194 @@
       outline: none;
     }
 
+    .post-caption {
+      padding: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
     .post-actions {
-      padding: 10px;
+      padding: 10px 15px;
       display: flex;
       justify-content: space-between;
-      font-size: 14px;
+      font-size: 15px;
       color: #aaa;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .post-actions span {
+      cursor: pointer;
+    }
+
+    /* Barra lateral (explorar) */
+    .sidebar {
+      margin-top: 20px;
+      background: #181818;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .sidebar h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .suggestion {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .suggestion .avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    .suggestion span {
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #888;
+      border-top: 1px solid #2a2a2a;
+      margin-top: 30px;
+    }
+
+    /* Grid principal */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar h1 {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="navbar">🎵 Mentaliizi Studios</div>
-
-    <div class="post">
-      <div class="post-header">
-        <div class="avatar"></div>
-        <div class="username">DJ Example</div>
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="nav-left">
+        <img src="logo.jpg" alt="Logo Mentaliizi Studios">
+        <h1>Mentaliizi Studios</h1>
       </div>
-      <div class="post-audio">
-        <audio controls>
-          <source src="musica-exemplo.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-      </div>
-      <div class="post-actions">
-        <span>❤️ Curtir</span>
-        <span>💬 Comentar</span>
-        <span>🔁 Compartilhar</span>
+      <div class="nav-right">
+        <span>🏠</span>
+        <span>🔍</span>
+        <span>➕</span>
+        <span>❤️</span>
+        <span>👤</span>
       </div>
     </div>
+
+    <!-- Conteúdo principal -->
+    <div class="feed main-grid">
+      <div>
+        <!-- Post 1 -->
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">DJ Example</div>
+          </div>
+          <div class="post-audio">
+            <audio controls>
+              <source src="musica-exemplo.mp3" type="audio/mpeg">
+              Seu navegador não suporta áudio.
+            </audio>
+          </div>
+          <div class="post-caption">
+            🚀 Lançamento exclusivo! Nova batida eletrônica direto do Mentaliizi Studios.
+          </div>
+          <div class="post-actions">
+            <span>❤️ Curtir</span>
+            <span>💬 Comentar</span>
+            <span>🔁 Compartilhar</span>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">MC Flow</div>
+          </div>
+          <div class="post-audio">
+            <audio controls>
+              <source src="musica2.mp3" type="audio/mpeg">
+              Seu navegador não suporta áudio.
+            </audio>
+          </div>
+          <div class="post-caption">
+            🎤 Nova rima pesada direto do estúdio! Deixa o feedback 👇
+          </div>
+          <div class="post-actions">
+            <span>❤️ Curtir</span>
+            <span>💬 Comentar</span>
+            <span>🔁 Compartilhar</span>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">BeatMakerX</div>
+          </div>
+          <div class="post-audio">
+            <audio controls>
+              <source src="musica3.mp3" type="audio/mpeg">
+              Seu navegador não suporta áudio.
+            </audio>
+          </div>
+          <div class="post-caption">
+            🔊 Beat instrumental free para MCs! Quem vai rimar em cima?
+          </div>
+          <div class="post-actions">
+            <span>❤️ Curtir</span>
+            <span>💬 Comentar</span>
+            <span>🔁 Compartilhar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h3>🔥 Artistas em alta</h3>
+        <div class="suggestion">
+          <div class="avatar"></div>
+          <span>DJ Example</span>
+        </div>
+        <div class="suggestion">
+          <div class="avatar"></div>
+          <span>MC Flow</span>
+        </div>
+        <div class="suggestion">
+          <div class="avatar"></div>
+          <span>BeatMakerX</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2025 Mentaliizi Studios — Plataforma de Música Independente
+    </footer>
 
   </div>
 </body>
