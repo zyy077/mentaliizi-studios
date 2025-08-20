@@ -302,5 +302,15 @@
     </footer>
 
   </div>
+
+  <!-- Script para esconder a logo só no seu PC -->
+  <script>
+    const meuPC = navigator.userAgent;
+    if (meuPC.includes("Windows NT 10.0") && meuPC.includes("Chrome")) {
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".navbar img").style.display = "none";
+      });
+    }
+  </script>
 </body>
 </html>
